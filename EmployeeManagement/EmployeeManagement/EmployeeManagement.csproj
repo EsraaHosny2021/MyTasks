@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+	  <ASPNetCoreHostingModel>InProcess</ASPNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20210218122931_SeedEmployeesTable.cs" />
+    <Compile Remove="Migrations\20210218122931_SeedEmployeesTable.Designer.cs" />
+    <Compile Remove="Migrations\20210218124418_AlterEmployeesSeedData.cs" />
+    <Compile Remove="Migrations\20210218124418_AlterEmployeesSeedData.Designer.cs" />
+    <Compile Remove="Migrations\20210218131019_AddPhotoPathColumn.cs" />
+    <Compile Remove="Migrations\20210218131019_AddPhotoPathColumn.Designer.cs" />
+    <Compile Remove="Migrations\20210218132223_AddSomeProperty.cs" />
+    <Compile Remove="Migrations\20210218132223_AddSomeProperty.Designer.cs" />
+    <Compile Remove="Migrations\20210218133028_AddPhotoPathColumn.cs" />
+    <Compile Remove="Migrations\20210218133028_AddPhotoPathColumn.Designer.cs" />
+    <Compile Remove="Migrations\20210221043845_InitialMigration.cs" />
+    <Compile Remove="Migrations\20210221043845_InitialMigration.Designer.cs" />
+    <Compile Remove="Migrations\20210221044039_InitialMigration.cs" />
+    <Compile Remove="Migrations\20210221044039_InitialMigration.Designer.cs" />
+    <Compile Remove="Migrations\20210221045116_SeedEmployeesTable.cs" />
+    <Compile Remove="Migrations\20210221045116_SeedEmployeesTable.Designer.cs" />
+    <Compile Remove="Migrations\20210221045444_InitialMigration.cs" />
+    <Compile Remove="Migrations\20210221045444_InitialMigration.Designer.cs" />
+    <Compile Remove="Migrations\20210221045525_SeedEmployeesTable.cs" />
+    <Compile Remove="Migrations\20210221045525_SeedEmployeesTable.Designer.cs" />
+    <Compile Remove="Migrations\20210221045615_SeedEmployeesTable.cs" />
+    <Compile Remove="Migrations\20210221045615_SeedEmployeesTable.Designer.cs" />
+    <Compile Remove="Migrations\20210221045913_InitialMigration.cs" />
+    <Compile Remove="Migrations\20210221045913_InitialMigration.Designer.cs" />
+    <Compile Remove="Migrations\20210221054221_AddSomeProperty.cs" />
+    <Compile Remove="Migrations\20210221054221_AddSomeProperty.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

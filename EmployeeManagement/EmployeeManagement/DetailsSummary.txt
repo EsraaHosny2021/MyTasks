@@ -1,0 +1,60 @@
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model EmployeeManagement.Models.Employee
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>
+        @ViewData["PageTitle1"]
+        </title>
+    </head>
+    <body>
+        <!--<h1>Hello from details page</h1>-->
+        <h1 style="color:red">ViewData</h1>
+        <h1>@ViewData["PageTitle1"]</h1>
+        <h3>@ViewData["Employee1"]</h3> <!--EmployeeManagement.Models.Employee-->
+        @{
+            //type casting as ViewData returns string value
+            var employee = ViewData["Employee1"] as EmployeeManagement.Models.Employee;
+        }
+
+        <div>
+            Name: @employee.Name
+        </div>
+        <div>
+            Email: @employee.Email
+        </div>
+        <div>
+            Department: @employee.Department
+        </div>
+        <hr>
+        <h1 style="color:red">ViewBag</h1>
+        <h1>@ViewBag.PageTitle2</h1>
+
+        <div>
+            Name: @ViewBag.Employee2.Name
+        </div>
+        <div>
+            Email: @ViewBag.Employee2.Email
+        </div>
+        <div>
+            Department: @ViewBag.Employee2.Department
+        </div>
+        <hr>
+        <h1 style="color:red">Strongly Typed View</h1>
+        <h1>@ViewBag.PageTitle2</h1>
+
+        <div>
+            Name: @Model.Name
+        </div>
+        <div>
+            Email: @Model.Email
+        </div>
+        <div>
+            Department: @Model.Department
+        </div>
+
+    </body>
+    </html>

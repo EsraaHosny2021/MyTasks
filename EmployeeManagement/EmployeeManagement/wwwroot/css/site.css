@@ -1,0 +1,15 @@
+﻿body {
+}
+.btn {
+    width: 75px;
+}
+.imageThumbnail {
+ width:auto;
+ height:100px;
+}
+.imageThumbnail1 {
+    vertical-align: middle;
+    border-style: none;
+    width: 50%;
+    height: 50%;
+}

@@ -1,0 +1,111 @@
+using EmployeeManagement.Models;
+using EmployeeManagement.ViewModels;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace EmployeeManagement.Controllers
+{
+    //controller and action are called tokens
+    [Route("[controller]/[action]")]
+    /* localhost:123/home crashes 
+     * in previous versions of mvc we make this
+     *  [Route("[controller]/[action=index]")]
+     *  but in asp.net core the solution is
+     *  [Route("~/Home")]
+     */
+
+
+    //[Route("[controller]")]
+    //[Route("Home")]
+    public class HomeController : Controller
+    {
+        //readonly prevents assigning any random values to this repository
+        private readonly IEmployeeRepository _employeeRepository;
+        //controller here injects interface to make code more flexible and easilty testable
+        //constructor injection
+         public HomeController(IEmployeeRepository employeeRepository)
+         {
+             _employeeRepository = employeeRepository;
+         }
+        /*public HomeController()
+        {
+            _employeeRepository = new MockEmployeeRepository();
+
+        }*/
+
+        /* public string Index()
+{
+return "Hello from MVC";
+}*/
+        /* public JsonResult Index()
+       {
+           return Json(new { id=1,name="Esraa" });
+       }*/
+
+        //attribute routing
+        [Route("~/Home")]
+        //[Route("[action]")]
+        //[Route("Index")]
+        [Route("~/")] 
+        //or [Route("/")]
+        public ViewResult Index()
+        {
+            //return _employeeRepository.GetEmployee(3).Name;
+            var model = _employeeRepository.GetAllEmployees();
+            return View(model);
+                
+        }
+        [Route("{id?}")]
+        // [Route("[action]/{id?}")]
+        //[Route("Details/{id?}")]
+        public ViewResult Details(int? id)
+        {
+            //Employee model = _employeeRepository.GetEmployee(1);
+            //return Json(model);
+            //Employee model = _employeeRepository.GetEmployee(1);
+            //return new ObjectResult(model);
+            //Employee model = _employeeRepository.GetEmployee(1);
+            //return View(model);
+            //Employee model = _employeeRepository.GetEmployee(1);
+            //return View("Test",model);
+            //absolute path
+            //return View("MyViews/Test.cshtml");
+            //return View("~/MyViews/Test.cshtml");
+            //wrong line not working=> return View("Test/UpdateTest.cshtml");
+            //relative path
+            //return View("../Test/UpdateTest"); 
+            //return View("../../MyViews/Test");
+            /*ViewData["Employee1"] = model;
+            ViewData["PageTitle1"] = "Employee Details";
+            ViewBag.Employee2 = model;
+            ViewBag.PageTitle2 = "Employee Details";
+            */
+            
+            //return View(model);
+            HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
+            {
+                Employee = _employeeRepository.GetEmployee(id??1),
+                PageTitle = "Employee Details"
+        };
+            return View(homeDetailsViewModel);
+        }
+
+        /*
+         * name of controller and action
+         * method in attribute routing are not related to 
+         * controller name class and action method name so, we can change their names 
+         * with keeping the same route naming.
+         */
+        [Route("HomeAny/Index")]
+        public ViewResult TestView()
+        {
+            var model = _employeeRepository.GetAllEmployees();
+            return View("~/Views/Home/Index.cshtml",model);
+        }
+       
+
+    }
+}
